@@ -4,7 +4,7 @@ module Day2
   class Part2 < Part
     def call
       result = @lines.count do |line|
-        valid?(line) || (0..line.size).any? { |i| valid?(line_without_index(line, i)) }
+        valid?(line) || (0..line.size-1).any? { |i| valid?(line_without_index(line, i)) }
       end
 
       puts "Result: #{result}"
@@ -16,9 +16,7 @@ module Day2
     end
 
     def line_without_index(line, index)
-      next_line = line.dup
-      next_line.delete_at(index)
-      next_line
+      line[0...index] + line[index+1..-1]
     end
 
     def parse_input
