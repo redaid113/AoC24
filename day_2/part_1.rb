@@ -3,7 +3,7 @@ require_relative "../utils/part"
 module Day2
   class Part1 < Part
     def call
-      result = @lines.select{|line| valid?(line)}.size
+      result = @lines.count{|line| valid?(line)}
       puts "Result: #{result}"
     end
 
