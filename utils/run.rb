@@ -1,4 +1,4 @@
-require_relative "./utils/callable"
+require_relative "./callable"
 
 class Run
   extend Callable

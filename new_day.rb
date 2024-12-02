@@ -1,4 +1,4 @@
-require_relative "./setup_day"
+require_relative "./utils/setup_day"
 
 day = ARGV.shift() || Time.now.day
 

@@ -1,8 +1,10 @@
-require_relative "./utils/callable"
+require_relative "./callable"
+require 'net/http'
 
 class SetupDay
   extend Callable
   def initialize(day:)
+    @day_num = day
     @day = "day_#{day}"
   end
 
@@ -14,10 +16,15 @@ class SetupDay
     create_test_file
   end
 
-  def create_directory
-    return if File.directory?("#{__dir__}/#{@day}")
+  private
+  def dir
+    "#{__dir__}/.."
+  end
 
-    Dir.mkdir("#{__dir__}/#{@day}")
+  def create_directory
+    return if File.directory?("#{dir}/#{@day}")
+
+    Dir.mkdir("#{dir}/#{@day}")
   end
 
   def create_part(part)
@@ -25,7 +32,7 @@ class SetupDay
   end
 
   def create_input_file
-    create_file("input.txt", "")
+    create_file("input.txt", download_input)
 
   end
 
@@ -34,7 +41,7 @@ class SetupDay
   end
 
   def create_file(file_name, content)
-    path = "#{__dir__}/#{@day}/#{file_name}"
+    path = "#{dir}/#{@day}/#{file_name}"
     return if File.exist?(path)
     File.open(path, "w") do |file|
       file.write(content)
@@ -59,6 +66,27 @@ class SetupDay
         end
       end
     TEMPLATE
+  end
+
+  def download_input
+    http = Net::HTTP.start('adventofcode.com', 443, use_ssl: true)
+    http.get("/2024/day/#{@day_num}/input", headers).body
+  end
+
+  def headers
+    puts File.read("#{dir}/.session").chomp
+    return {
+      'Cookie' => cookie,
+      'User-Agent' => 'https://github.com/redaid113/AoC24',
+    }
+  end
+
+  def cookie
+    "session=#{session}"
+  end
+
+  def session
+    File.read("#{dir}/.session").chomp
   end
 
 end
