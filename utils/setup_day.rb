@@ -52,7 +52,7 @@ class SetupDay
     <<~TEMPLATE
       require_relative "../utils/part"
 
-      module #{@day.capitalize}
+      module #{@day.sub("_", "").capitalize}
         class Part#{part} < Part
           def call
             # Your code here
@@ -74,7 +74,6 @@ class SetupDay
   end
 
   def headers
-    puts File.read("#{dir}/.session").chomp
     return {
       'Cookie' => cookie,
       'User-Agent' => 'https://github.com/redaid113/AoC24',

@@ -26,7 +26,7 @@ class Run
     puts "Running #{@day}/part_#{part}.rb"
     puts "========================"
 
-    require_relative("#{@day}/part_#{part}.rb")
+    require_relative("../#{@day}/part_#{part}.rb")
     Object.const_get(@day.sub("_", "").capitalize).const_get("Part#{part}").call(file_path: @file_path)
   end
 end

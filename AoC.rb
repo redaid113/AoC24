@@ -1,6 +1,6 @@
 require_relative "./utils/run"
 
-day = ARGV.shift() || Time.now.day
+day = ARGV.shift() || "day_#{Time.now.day}"
 
 part1 = !ARGV.include?('--part_2')
 part2 = !ARGV.include?('--part_1')
