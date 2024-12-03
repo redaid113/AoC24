@@ -12,7 +12,8 @@ class Part
   end
 
   def parse_file
-    @file_lines = ReadLines.call(file_path: @file_path)
+    @input = File.open(@file_path).read.strip
+    @file_lines = ReadLines.call(input: @input)
   end
 
   def parse_input

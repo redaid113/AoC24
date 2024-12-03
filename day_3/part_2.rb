@@ -3,10 +3,8 @@ require_relative "../utils/part"
 module Day3
   class Part2 < Part
     def call
-      re = /do\(\)|don't\(\)|mul\(\d+,\d+\)/
-
       enabled = true
-      matches = @file_lines.join("\n").scan(/do\(\)|don't\(\)|mul\(\d+,\d+\)/).select do |match|
+      matches = @input.scan(/do\(\)|don't\(\)|mul\(\d+,\d+\)/).select do |match|
         if match == "do()"
           enabled = true
           next(false)
