@@ -3,9 +3,11 @@ require_relative "../utils/part"
 module Day5
   class Part2 < Part
     def call
-      rejected = @updates.reject{ |update| valid?(update) }
-      rejected.map{|update| sort!(update)}
-      result = rejected.map{ |update| update[update.size/2] }.sum
+      result = @updates
+        .reject{ |update| valid?(update) }
+        .map{|update| sort!(update)}
+        .map{ |update| update[update.size/2] }
+        .sum
       puts "Result: #{result}"
     end
 
