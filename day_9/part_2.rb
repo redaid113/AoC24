@@ -9,22 +9,6 @@ module Day9
         arr << [nil, space] if space
       end
 
-
-      # for i in (0..arr.size-1).reverse_each do
-      #   num, count = arr[i]
-      #   next if num == nil
-      #   for j in 0..i-1
-      #     id, c = arr[j]
-      #     puts "id: #{id}, c: #{c}"
-      #     next unless id == nil
-      #     next unless c <= count
-      #     arr[i] = [nil, count]
-      #     arr[j] = [num, count]
-      #     arr.insert(j+1, [nil, count - c]) if count > c
-      #   end
-      #   puts "Num: #{num}, Count: #{count}"
-      #   break
-      # end
       n = []
       arr.each_with_index do |(num, count), i|
         if num != nil
