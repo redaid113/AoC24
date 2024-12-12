@@ -2,7 +2,6 @@ require_relative "../utils/part"
 require "set"
 
 module Day12
-
   class Part2 < Part
     def call
       result = regions.sum {|region| area(region) * sides(region) }
@@ -10,13 +9,6 @@ module Day12
     end
 
     def sides(region)
-      # puts "Region: #{@plot[region[0][0]][region[0][1]]}"
-      # puts "Region: #{region}"
-      # puts "Corners: #{corners(region)}"
-      # puts "Corners length : #{corners(region).length}"
-      # puts "Area: #{area(region)}"
-      # puts corners(region).length * area(region)
-      # puts "--------"
       region.sum{ |row, col| outer_corners(region, row, col) + inner_corners(region, row, col) }
     end
 
