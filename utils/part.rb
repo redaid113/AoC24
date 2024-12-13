@@ -13,6 +13,7 @@ class Part
 
   def parse_file
     @input = File.open(@file_path).read.strip
+    @paragraphs = @input.split("\n\n")
     @file_lines = ReadLines.call(input: @input)
   end
 
