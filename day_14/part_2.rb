@@ -21,11 +21,11 @@ module Day14
     end
 
     def tree_like?
+      @robots.sort_by!{ |robot| robot[0] }
       consecutive_matching_rows = 0
       for y in 0..GRID_SIZE[1]-1
         matching_row = @robots
           .select{ |robot| robot[1] == y }
-          .sort_by{ |robot| robot[0] }
           .each_cons(3).any? {|robot1, robot2, robot3| robot1[0] + 1 == robot2[0] && robot2[0] + 1 == robot3[0] }
         consecutive_matching_rows += 1 if matching_row
         consecutive_matching_rows = 0 unless matching_row
