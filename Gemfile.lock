@@ -1,12 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    priority_queue_cxx (0.3.7)
 
 PLATFORMS
   arm64-darwin-23
   ruby
 
 DEPENDENCIES
+  priority_queue_cxx (~> 0.3.6)
 
 BUNDLED WITH
    2.5.15
