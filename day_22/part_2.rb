@@ -22,7 +22,6 @@ module Day22
       possible_sequences = sequences_array.map{|sequences| sequences.keys}.flatten(1).uniq
       result = possible_sequences.map{|sequence| sequences_array.sum{|sequences| sequences[sequence] || 0}}.max
 
-
       puts "Result: #{result}"
     end
 
@@ -31,8 +30,6 @@ module Day22
       secret = (secret ^ (secret / 32)) % 16777216
       (secret ^ (secret * 2048)) % 16777216
     end
-
-
 
     def parse_input
       @secrets = @file_lines.map(&:to_i)

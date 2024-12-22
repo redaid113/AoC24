@@ -18,8 +18,6 @@ module Day22
       (secret ^ (secret * 2048)) % 16777216
     end
 
-
-
     def parse_input
       @secrets = @file_lines.map(&:to_i)
     end
