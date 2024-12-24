@@ -1,3 +1,7 @@
 .DS_Store
-**/input.txt
 .session
+
+**/input.txt
+**/answer.txt
+**/graph.dot
+**/graph.png
